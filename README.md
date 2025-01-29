@@ -15,10 +15,10 @@ Urban functional regions are urban regions that perform different functions in c
 Successfully achieving the goals of the project will require skills in data mining and analysis. Real-world data from UK cities including Cardiff City will be used in the project.
 
 ### Summarised Initial Plan:
- 1. Look for different datasets that I can use. I can get POI data from the ordnance survey via [digimap](https://digimap.edina.ac.uk/) or from [openstreetmap](https://www.openstreetmap.org/#map=12/51.4877/-3.1804). Maybe can also integrate other datasets such as city boundaries or census data.
+1. Look for different datasets that I can use. I can get POI data from the ordnance survey via [digimap](https://digimap.edina.ac.uk/) or from [openstreetmap](https://www.openstreetmap.org/#map=12/51.4877/-3.1804). Maybe can also integrate other datasets such as city boundaries or census data.
 2. Do a review of related works on the topic. This can be used to identify the data analysis methods that I plan to use.
 3. Implement methods; I should be able to use existing software libraries.
 4. Perform the analysis using above methods. I can compare different cities, different POI types, create nice visualisations etc.
 5. Write the report.
 
-** See Initial_Plan.pdf for a more in-depth plan for the project
+** See Initial_Plan.pdf (coming soon) for a more in-depth plan for the project.
