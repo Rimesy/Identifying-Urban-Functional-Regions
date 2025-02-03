@@ -22,4 +22,4 @@ Successfully achieving the goals of the project will require skills in data mini
 5. Compare the success of functional regions in both cities to find insights on the impacts of urban layout.
 6. Write the report.
 
-** See Initial_Plan.pdf (coming soon) for a more in-depth plan for the project.
+** See CM3203 Initial Plan.pdf for a more in-depth plan for the project.
