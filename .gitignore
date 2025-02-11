@@ -171,5 +171,6 @@ cython_debug/
 .pypirc
 
 # Documents
-initial_plan_template.pdf
+initial_plan_guide.pdf
 initial_plan_rough.docx
+final_report_guide.pdf
