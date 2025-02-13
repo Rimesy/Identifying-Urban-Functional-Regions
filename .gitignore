@@ -170,6 +170,7 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+
 # Documents
 initial_plan_guide.pdf
 initial_plan_rough.docx
