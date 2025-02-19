@@ -8,13 +8,13 @@ app = Dash()
 
 app.layout = [
     html.H1(children='Title', style={'textAlign':'center'}),
-    dcc.Dropdown(df.country.unique(), 'Canada', id='dropdown-selection'),
-    dcc.Graph(id='graph-content')
+    html.Label(children='Select a file:', id='file_upload_label', style={'textAlign':'centre'}),
+    dcc.Upload(id='file_input', children=html.Button('Upload'))
 ]
 
 @callback(
-    Output('graph-content', 'figure'),
-    Input('dropdown-selection', 'value')
+    # Output('graph-content', 'figure'),
+    Input('file_input', 'contents')
 )
 def update_graph(value):
     dff = df[df.country==value]
