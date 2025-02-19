@@ -7,8 +7,8 @@ df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapmi
 app = Dash()
 
 app.layout = [
-    html.H1(children='Title', style={'textAlign':'center'}),
-    html.Label(children='Select a file:', id='file_upload_label', style={'textAlign':'centre'}),
+    html.H1(children='Interactive Functional Region Map', style={'textAlign':'center'}),
+    html.Label(children='Upload POI data:', id='file_upload_label', style={'textAlign':'centre'}),
     dcc.Upload(id='file_input', children=html.Button('Upload'))
 ]
 
