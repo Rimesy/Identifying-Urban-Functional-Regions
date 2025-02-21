@@ -1,10 +1,11 @@
 from dash import html, dash_table
 import io
 import base64
+import pyproj
 import pandas as pd
 
 # Function parse_contents reads a file and strips it to leave the data we want to use
-def parse_contents(contents, filename):
+def parse_POI_contents(contents, filename):
     content_type, content_string = contents.split(',')
     decoded = base64.b64decode(content_string) # Decodes the data with base64 
 
@@ -22,8 +23,20 @@ def parse_contents(contents, filename):
     
     return df # df is DataFrame (https://pandas.pydata.org/docs/reference/frame.html)
 
+# Function parse_map_contents converts a .tif file into a DataFrame
+"""
+def parse_map_contents(contents, filename):
+    content_type, content_string = contents.split(',')
+
+    dtm_pre_arr = rxr.open_rasterio(content_string, masked=True).squeeze().rio.reproject('EPSG:3857')
+    converted_df = dtm_pre_arr.to_dataframe(name='map').reset_index()
+    df = converted_df.dropna().reset_index(drop=True)
+
+    return df
+"""
+
 # Function data_table creates a visual data table to be displayed in the dash app
-def data_table(df, filename):
+def data_display(df, filename):
     # Return a html <div> with the dash table nested
     return html.Div([
         html.H5(filename),
@@ -35,38 +48,37 @@ def data_table(df, filename):
         ),
 
         html.Hr(),  # horizontal line
-
-        # For debugging, display the raw contents provided by the web browser
-        """ 
-        html.Div('Raw Content'),
-        html.Pre(contents[0:200] + '...', style={
-            'whiteSpace': 'pre-wrap',
-            'wordBreak': 'break-all'
-        }) 
-        """
     ])
 
-# Function clean_POI_data takes the the data we need from the DataFrame and 
+# Function clean_POI_data takes the the data we need from the DataFrame
 def clean_POI_data(df):
-    # df.drop(columns=['B', 'C', 'D', 'E']) # Removes columns holding incomplete information
-    df.rename(columns={'A': 'Unique Reference Number', 'B': 'Name', 'C': 'PointX Classification Code', 'D': 'Easting', 'E': 'Northing'}, inplace=True)
-    df['Positional Accuracy code'] = None
+    df.rename(columns={'A': 'unique reference number', 'B': 'name', 'C': 'pointX classification code', 'D': 'lon', 'E': 'lat'}, inplace=True)
+    df['positional accuracy code'] = None # Add sixth column needed
 
     index_bin = [] # Bin for indexes that hold incomplete data, and therefore need to be removed
+    transformer = pyproj.Transformer.from_crs('EPSG:27700', 'EPSG:4326') # The transformer allows for BNG(27700) coordinates to be converted to Lat/Long(4326) coordinates
+
     for i in range(0, len(df.index)):
-        line = df.at[i, 'Unique Reference Number'] # Create a String variable of the data in row i of the DataFrame
-        data_list = line.split('|')
+        line = df.at[i, 'unique reference number'] # Create a String variable of the data in row i of the DataFrame
+        data_list = line.split('|') # Splits the row data into sections that we can store individually
+        
+        # This statement checks that all the necessary columns are present 
         if len(data_list) < 6:
             index_bin.append(i)
             continue
-        # TODO: find way to iterate or condense the following crap
-        df.at[i,'Unique Reference Number'] = data_list[0]
-        df.at[i,'Name'] = data_list[1]
-        df.at[i,'PointX Classification Code'] = data_list[2]
-        df.at[i,'Easting'] = data_list[3]
-        df.at[i,'Northing'] = data_list[4]
-        df.at[i,'Positional Accuracy code'] = data_list[5]
-    
+
+        df.at[i,'unique reference number'] = data_list[0]
+        df.at[i,'name'] = data_list[1]
+        df.at[i,'pointX classification code'] = data_list[2]
+
+        lat, lon = transformer.transform(data_list[3], data_list[4])
+        print('Uploaded ' + str(i) + '/' + str(len(df.index)) + ' rows', end='\r') # Sends a message to th terminal to show how quickly the rows are being cleaned
+
+        df.at[i,'lon'] = lon
+        df.at[i,'lat'] = lat
+        df.at[i,'positional accuracy code'] = data_list[5]
+
+    print('Uploaded ' + str(i + 1) + '/' + str(len(df.index)) + ' rows', end='\r')
 
     df.drop(index_bin) # Removes all rows with incomplete data
 
