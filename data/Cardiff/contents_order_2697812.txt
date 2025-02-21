@@ -1,0 +1,89 @@
+********************************************************************
+
+EDINA DIGIMAP:
+
+DIGITAL DATA SUPPLY
+
+********************************************************************
+
+
+This data is distributed under licence by:
+
+    EDINA
+    University of Edinburgh
+    https://edina.ac.uk
+
+    Tel:    0131 650 3302
+    Fax:    0131 650 3308
+    Email:  digimap@ed.ac.uk
+		
+
+
+---------------------------------------------------------
+
+CONTENTS
+
+You will have received the data files listed below, each product and area has
+its own folder. Note that each data folder contains a conditions.txt file
+which states the conditions for use of the data within. These conditions can
+vary between different data products.
+
+
+
+-------------------------------------------------------------------------------
+Folder:           oml-raster_5876574
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     20 February 2025 at 21:18:03
+Product:          OS Open Map Local
+Version:          October 2024
+Format:           TIFF
+Theme:            N/A
+Area:             11 tiles
+Tiles:
+ 
+Tile Name:        st17ne
+Extent:           315000.0, 175000.0 - 320000.0, 180000.0
+Last Amended:     19 September 2024
+  
+Tile Name:        st17nw_clipped
+Extent:           311275.8, 175000.0 - 315000.0, 180000.0
+Last Amended:     19 September 2024
+  
+Tile Name:        st17se_clipped
+Extent:           315000.0, 173146.4 - 320000.0, 175000.0
+Last Amended:     19 September 2024
+  
+Tile Name:        st17sw_clipped
+Extent:           311275.8, 173146.4 - 315000.0, 175000.0
+Last Amended:     19 September 2024
+  
+Tile Name:        st18se_clipped
+Extent:           315000.0, 180000.0 - 320000.0, 183790.4
+Last Amended:     19 September 2024
+  
+Tile Name:        st18sw_clipped
+Extent:           311275.8, 180000.0 - 315000.0, 183790.4
+Last Amended:     19 September 2024
+  
+Tile Name:        st27ne_clipped
+Extent:           325000.0, 175000.0 - 325069.3, 180000.0
+Last Amended:     19 September 2024
+  
+Tile Name:        st27nw
+Extent:           320000.0, 175000.0 - 325000.0, 180000.0
+Last Amended:     19 September 2024
+  
+Tile Name:        st27sw_clipped
+Extent:           320000.0, 173146.4 - 325000.0, 175000.0
+Last Amended:     19 September 2024
+  
+Tile Name:        st28se_clipped
+Extent:           325000.0, 180000.0 - 325069.3, 183790.4
+Last Amended:     19 September 2024
+  
+Tile Name:        st28sw_clipped
+Extent:           320000.0, 180000.0 - 325000.0, 183790.4
+Last Amended:     19 September 2024
+  
+The tiles listed above have been combined to create oml-raster_5876574.tif.
+   

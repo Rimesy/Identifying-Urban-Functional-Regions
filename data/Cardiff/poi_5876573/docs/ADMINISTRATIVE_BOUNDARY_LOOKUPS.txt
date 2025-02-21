@@ -1,0 +1,351 @@
+Name|Area Code|Description
+Aberdeen City|UTA|Unitary Authority
+Aberdeenshire|UTA|Unitary Authority
+Abertawe - Swansea|UTA|Unitary Authority
+Adur District|DIS|District
+Amber Valley District|DIS|District
+Angus|UTA|Unitary Authority
+Argyll and Bute|UTA|Unitary Authority
+Arun District|DIS|District
+Ashfield District|DIS|District
+Ashford District|DIS|District
+Babergh District|DIS|District
+Barking and Dagenham London Boro|LBO|London Borough
+Barnet London Boro|LBO|London Borough
+Barnsley District|MTD|Metropolitan District
+Basildon District|DIS|District
+Basingstoke and Deane District|DIS|District
+Bassetlaw District|DIS|District
+Bath and North East Somerset|UTA|Unitary Authority
+Bedford|UTA|Unitary Authority
+Bexley London Boro|LBO|London Borough
+Birmingham District|MTD|Metropolitan District
+Blaby District|DIS|District
+Blackburn with Darwen|UTA|Unitary Authority
+Blackpool|UTA|Unitary Authority
+Blaenau Gwent - Blaenau Gwent|UTA|Unitary Authority
+Bolsover District|DIS|District
+Bolton District|MTD|Metropolitan District
+Boston District|DIS|District
+Bournemouth, Christchurch and Poole|UTA|Unitary Authority
+Bracknell Forest|UTA|Unitary Authority
+Bradford District|MTD|Metropolitan District
+Braintree District|DIS|District
+Breckland District|DIS|District
+Brent London Boro|LBO|London Borough
+Brentwood District|DIS|District
+Bro Morgannwg - the Vale of Glamorgan|UTA|Unitary Authority
+Broadland District|DIS|District
+Bromley London Boro|LBO|London Borough
+Bromsgrove District|DIS|District
+Broxbourne District|DIS|District
+Broxtowe District|DIS|District
+Buckinghamshire|UTA|Unitary Authority
+Burnley District|DIS|District
+Bury District|MTD|Metropolitan District
+Caerdydd - Cardiff|UTA|Unitary Authority
+Caerffili - Caerphilly|UTA|Unitary Authority
+Calderdale District|MTD|Metropolitan District
+Cambridge District|DIS|District
+Camden London Boro|LBO|London Borough
+Cannock Chase District|DIS|District
+Canterbury District|DIS|District
+Casnewydd - Newport|UTA|Unitary Authority
+Castell-nedd Port Talbot - Neath Port Talbot|UTA|Unitary Authority
+Castle Point District|DIS|District
+Central Bedfordshire|UTA|Unitary Authority
+Charnwood District|DIS|District
+Chelmsford District|DIS|District
+Cheltenham District|DIS|District
+Cherwell District|DIS|District
+Cheshire East|UTA|Unitary Authority
+Cheshire West and Chester|UTA|Unitary Authority
+Chesterfield District|DIS|District
+Chichester District|DIS|District
+Chorley District|DIS|District
+City and County of the City of London|LBO|London Borough
+City of Bristol|UTA|Unitary Authority
+City of Derby|UTA|Unitary Authority
+City of Edinburgh|UTA|Unitary Authority
+City of Kingston upon Hull|UTA|Unitary Authority
+City of Leicester|UTA|Unitary Authority
+City of Nottingham|UTA|Unitary Authority
+City of Peterborough|UTA|Unitary Authority
+City of Plymouth|UTA|Unitary Authority
+City of Portsmouth|UTA|Unitary Authority
+City of Southampton|UTA|Unitary Authority
+City of Stoke-on-Trent|UTA|Unitary Authority
+City of Westminster London Boro|LBO|London Borough
+City of Wolverhampton District|MTD|Metropolitan District
+Clackmannanshire|UTA|Unitary Authority
+Colchester District|DIS|District
+Conwy - Conwy|UTA|Unitary Authority
+Cornwall|UTA|Unitary Authority
+Cotswold District|DIS|District
+County Durham|UTA|Unitary Authority
+County of Herefordshire|UTA|Unitary Authority
+Coventry District|MTD|Metropolitan District
+Crawley District|DIS|District
+Croydon London Boro|LBO|London Borough
+Cumberland|UTA|Unitary Authority
+Dacorum District|DIS|District
+Darlington|UTA|Unitary Authority
+Dartford District|DIS|District
+Derbyshire Dales District|DIS|District
+Doncaster District|MTD|Metropolitan District
+Dorset|UTA|Unitary Authority
+Dover District|DIS|District
+Dudley District|MTD|Metropolitan District
+Dumfries and Galloway|UTA|Unitary Authority
+Dundee City|UTA|Unitary Authority
+Ealing London Boro|LBO|London Borough
+East Ayrshire|UTA|Unitary Authority
+East Cambridgeshire District|DIS|District
+East Devon District|DIS|District
+East Dunbartonshire|UTA|Unitary Authority
+East Hampshire District|DIS|District
+East Hertfordshire District|DIS|District
+East Lindsey District|DIS|District
+East Lothian|UTA|Unitary Authority
+East Renfrewshire|UTA|Unitary Authority
+East Riding of Yorkshire|UTA|Unitary Authority
+East Staffordshire District|DIS|District
+East Suffolk District|DIS|District
+Eastbourne District|DIS|District
+Eastleigh District|DIS|District
+Elmbridge District|DIS|District
+Enfield London Boro|LBO|London Borough
+Epping Forest District|DIS|District
+Epsom and Ewell District|DIS|District
+Erewash District|DIS|District
+Exeter District|DIS|District
+Falkirk|UTA|Unitary Authority
+Fareham District|DIS|District
+Fenland District|DIS|District
+Fife|UTA|Unitary Authority
+Folkestone and Hythe District|DIS|District
+Forest of Dean District|DIS|District
+Fylde District|DIS|District
+Gateshead District|MTD|Metropolitan District
+Gedling District|DIS|District
+Glasgow City|UTA|Unitary Authority
+Gloucester District|DIS|District
+Gosport District|DIS|District
+Gravesham District|DIS|District
+Great Yarmouth District|DIS|District
+Greenwich London Boro|LBO|London Borough
+Guildford District|DIS|District
+Gwynedd - Gwynedd|UTA|Unitary Authority
+Hackney London Boro|LBO|London Borough
+Halton|UTA|Unitary Authority
+Hammersmith and Fulham London Boro|LBO|London Borough
+Harborough District|DIS|District
+Haringey London Boro|LBO|London Borough
+Harlow District|DIS|District
+Harrow London Boro|LBO|London Borough
+Hart District|DIS|District
+Hartlepool|UTA|Unitary Authority
+Hastings District|DIS|District
+Havant District|DIS|District
+Havering London Boro|LBO|London Borough
+Hertsmere District|DIS|District
+High Peak District|DIS|District
+Highland|UTA|Unitary Authority
+Hillingdon London Boro|LBO|London Borough
+Hinckley and Bosworth District|DIS|District
+Horsham District|DIS|District
+Hounslow London Boro|LBO|London Borough
+Huntingdonshire District|DIS|District
+Hyndburn District|DIS|District
+Inverclyde|UTA|Unitary Authority
+Ipswich District|DIS|District
+Isle of Wight|UTA|Unitary Authority
+Isles of Scilly|UTA|Unitary Authority
+Islington London Boro|LBO|London Borough
+Kensington and Chelsea London Boro|LBO|London Borough
+King's Lynn and West Norfolk District|DIS|District
+Kingston upon Thames London Boro|LBO|London Borough
+Kirklees District|MTD|Metropolitan District
+Knowsley District|MTD|Metropolitan District
+Lambeth London Boro|LBO|London Borough
+Lancaster District|DIS|District
+Leeds District|MTD|Metropolitan District
+Lewes District|DIS|District
+Lewisham London Boro|LBO|London Borough
+Lichfield District|DIS|District
+Lincoln District|DIS|District
+Liverpool District|MTD|Metropolitan District
+Luton|UTA|Unitary Authority
+Maidstone District|DIS|District
+Maldon District|DIS|District
+Malvern Hills District|DIS|District
+Manchester District|MTD|Metropolitan District
+Mansfield District|DIS|District
+Medway|UTA|Unitary Authority
+Melton District|DIS|District
+Merthyr Tudful - Merthyr Tydfil|UTA|Unitary Authority
+Merton London Boro|LBO|London Borough
+Mid Devon District|DIS|District
+Mid Suffolk District|DIS|District
+Mid Sussex District|DIS|District
+Middlesbrough|UTA|Unitary Authority
+Midlothian|UTA|Unitary Authority
+Milton Keynes|UTA|Unitary Authority
+Mole Valley District|DIS|District
+Moray|UTA|Unitary Authority
+Na h-Eileanan an Iar|UTA|Unitary Authority
+New Forest District|DIS|District
+Newark and Sherwood District|DIS|District
+Newcastle upon Tyne District|MTD|Metropolitan District
+Newcastle-under-Lyme District|DIS|District
+Newham London Boro|LBO|London Borough
+North Ayrshire|UTA|Unitary Authority
+North Devon District|DIS|District
+North East Derbyshire District|DIS|District
+North East Lincolnshire|UTA|Unitary Authority
+North Hertfordshire District|DIS|District
+North Kesteven District|DIS|District
+North Lanarkshire|UTA|Unitary Authority
+North Lincolnshire|UTA|Unitary Authority
+North Norfolk District|DIS|District
+North Northamptonshire|UTA|Unitary Authority
+North Somerset|UTA|Unitary Authority
+North Tyneside District|MTD|Metropolitan District
+North Warwickshire District|DIS|District
+North West Leicestershire District|DIS|District
+North Yorkshire|UTA|Unitary Authority
+Northumberland|UTA|Unitary Authority
+Norwich District|DIS|District
+Nuneaton and Bedworth District|DIS|District
+Oadby and Wigston District|DIS|District
+Oldham District|MTD|Metropolitan District
+Orkney Islands|UTA|Unitary Authority
+Oxford District|DIS|District
+Pen-y-bont ar Ogwr - Bridgend|UTA|Unitary Authority
+Pendle District|DIS|District
+Perth and Kinross|UTA|Unitary Authority
+Powys - Powys|UTA|Unitary Authority
+Preston District|DIS|District
+Reading|UTA|Unitary Authority
+Redbridge London Boro|LBO|London Borough
+Redcar and Cleveland|UTA|Unitary Authority
+Redditch District|DIS|District
+Reigate and Banstead District|DIS|District
+Renfrewshire|UTA|Unitary Authority
+Rhondda Cynon Taf - Rhondda Cynon Taf|UTA|Unitary Authority
+Ribble Valley District|DIS|District
+Richmond upon Thames London Boro|LBO|London Borough
+Rochdale District|MTD|Metropolitan District
+Rochford District|DIS|District
+Rossendale District|DIS|District
+Rother District|DIS|District
+Rotherham District|MTD|Metropolitan District
+Rugby District|DIS|District
+Runnymede District|DIS|District
+Rushcliffe District|DIS|District
+Rushmoor District|DIS|District
+Rutland|UTA|Unitary Authority
+Salford District|MTD|Metropolitan District
+Sandwell District|MTD|Metropolitan District
+Scottish Borders|UTA|Unitary Authority
+Sefton District|MTD|Metropolitan District
+Sevenoaks District|DIS|District
+Sheffield District|MTD|Metropolitan District
+Shetland Islands|UTA|Unitary Authority
+Shropshire|UTA|Unitary Authority
+Sir Benfro - Pembrokeshire|UTA|Unitary Authority
+Sir Ceredigion - Ceredigion|UTA|Unitary Authority
+Sir Ddinbych - Denbighshire|UTA|Unitary Authority
+Sir Fynwy - Monmouthshire|UTA|Unitary Authority
+Sir Gaerfyrddin - Carmarthenshire|UTA|Unitary Authority
+Sir Ynys Mon - Isle of Anglesey|UTA|Unitary Authority
+Sir y Fflint - Flintshire|UTA|Unitary Authority
+Slough|UTA|Unitary Authority
+Solihull District|MTD|Metropolitan District
+Somerset|UTA|Unitary Authority
+South Ayrshire|UTA|Unitary Authority
+South Cambridgeshire District|DIS|District
+South Derbyshire District|DIS|District
+South Gloucestershire|UTA|Unitary Authority
+South Hams District|DIS|District
+South Holland District|DIS|District
+South Kesteven District|DIS|District
+South Lanarkshire|UTA|Unitary Authority
+South Norfolk District|DIS|District
+South Oxfordshire District|DIS|District
+South Ribble District|DIS|District
+South Staffordshire District|DIS|District
+South Tyneside District|MTD|Metropolitan District
+Southend-on-Sea|UTA|Unitary Authority
+Southwark London Boro|LBO|London Borough
+Spelthorne District|DIS|District
+St. Albans District|DIS|District
+St. Helens District|MTD|Metropolitan District
+Stafford District|DIS|District
+Staffordshire Moorlands District|DIS|District
+Stevenage District|DIS|District
+Stirling|UTA|Unitary Authority
+Stockport District|MTD|Metropolitan District
+Stockton-on-Tees|UTA|Unitary Authority
+Stratford-on-Avon District|DIS|District
+Stroud District|DIS|District
+Sunderland District|MTD|Metropolitan District
+Surrey Heath District|DIS|District
+Sutton London Boro|LBO|London Borough
+Swale District|DIS|District
+Swindon|UTA|Unitary Authority
+Tameside District|MTD|Metropolitan District
+Tamworth District|DIS|District
+Tandridge District|DIS|District
+Teignbridge District|DIS|District
+Telford and Wrekin|UTA|Unitary Authority
+Tendring District|DIS|District
+Test Valley District|DIS|District
+Tewkesbury District|DIS|District
+Thanet District|DIS|District
+The City of Brighton and Hove|UTA|Unitary Authority
+Three Rivers District|DIS|District
+Thurrock|UTA|Unitary Authority
+Tonbridge and Malling District|DIS|District
+Torbay|UTA|Unitary Authority
+Torfaen - Torfaen|UTA|Unitary Authority
+Torridge District|DIS|District
+Tower Hamlets London Boro|LBO|London Borough
+Trafford District|MTD|Metropolitan District
+Tunbridge Wells District|DIS|District
+Uttlesford District|DIS|District
+Vale of White Horse District|DIS|District
+Wakefield District|MTD|Metropolitan District
+Walsall District|MTD|Metropolitan District
+Waltham Forest London Boro|LBO|London Borough
+Wandsworth London Boro|LBO|London Borough
+Warrington|UTA|Unitary Authority
+Warwick District|DIS|District
+Watford District|DIS|District
+Waverley District|DIS|District
+Wealden District|DIS|District
+Welwyn Hatfield District|DIS|District
+West Berkshire|UTA|Unitary Authority
+West Devon District|DIS|District
+West Dunbartonshire|UTA|Unitary Authority
+West Lancashire District|DIS|District
+West Lindsey District|DIS|District
+West Lothian|UTA|Unitary Authority
+West Northamptonshire|UTA|Unitary Authority
+West Oxfordshire District|DIS|District
+West Suffolk District|DIS|District
+Westmorland and Furness|UTA|Unitary Authority
+Wigan District|MTD|Metropolitan District
+Wiltshire|UTA|Unitary Authority
+Winchester District|DIS|District
+Windsor and Maidenhead|UTA|Unitary Authority
+Wirral District|MTD|Metropolitan District
+Woking District|DIS|District
+Wokingham|UTA|Unitary Authority
+Worcester District|DIS|District
+Worthing District|DIS|District
+Wrecsam - Wrexham|UTA|Unitary Authority
+Wychavon District|DIS|District
+Wyre District|DIS|District
+Wyre Forest District|DIS|District
+York|UTA|Unitary Authority
