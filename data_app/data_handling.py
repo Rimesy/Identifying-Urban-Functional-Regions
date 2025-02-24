@@ -83,3 +83,17 @@ def clean_POI_data(df):
     df.drop(index_bin) # Removes all rows with incomplete data
 
     return df
+
+# Function classify_data returns the classification of a POI using its pointX code and a chosen levelof classification
+def classify_data(level, pointX_code):
+    from classification import groups, categories, classes
+
+    try:
+        if level == '1':
+            return groups[pointX_code[:2]]
+        elif level == '2':
+            return categories[pointX_code[2:4]]
+        elif level == '3':
+            return classes[pointX_code[4:]]
+    except Exception as e:
+        print(e)

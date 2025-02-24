@@ -662,6 +662,7 @@ classes = {'0003': 'Bed and breakfast and backpacker accommodation',
            '0759': 'Hail and ride zones'
 }
 
-print('Groups: ' + str(len(groups)))
-print('Categories: ' + str(len(categories)))
-print('Classes: ' + str(len(classes)))
+def get_lengths():
+    print('Groups: ' + str(len(groups)))
+    print('Categories: ' + str(len(categories)))
+    print('Classes: ' + str(len(classes)))
