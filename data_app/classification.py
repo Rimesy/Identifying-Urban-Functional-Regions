@@ -659,8 +659,7 @@ classes = {'0003': 'Bed and breakfast and backpacker accommodation',
            '0738': 'Railway stations, junctions and halts',
            '0761': 'Underground network stations',
            '0732': 'Bus stops',
-           '0759': 'Hail and ride zones'
-}
+           '0759': 'Hail and ride zones'}
 
 def get_lengths():
     print('Groups: ' + str(len(groups)))
