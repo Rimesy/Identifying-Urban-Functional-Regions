@@ -3,6 +3,7 @@ import io
 import base64
 import pyproj
 import pandas as pd
+import cluster
 
 # Function parse_contents reads a file and strips it to leave the data we want to use
 def parse_POI_contents(contents, filename):
@@ -55,6 +56,7 @@ def clean_POI_data(df):
     df.rename(columns={'A': 'unique reference number', 'B': 'name', 'C': 'pointX classification code', 'D': 'lon', 'E': 'lat'}, inplace=True)
     df['positional accuracy code'] = None # Add sixth column needed
 
+    global index_bin
     index_bin = [] # Bin for indexes that hold incomplete data, and therefore need to be removed
     transformer = pyproj.Transformer.from_crs('EPSG:27700', 'EPSG:4326') # The transformer allows for BNG(27700) coordinates to be converted to Lat/Long(4326) coordinates
 
@@ -65,22 +67,21 @@ def clean_POI_data(df):
         # This statement checks that all the necessary columns are present 
         if len(data_list) < 6:
             index_bin.append(i)
+            df.drop([i], axis=0, inplace=True) # Removes row with incomplete data
             continue
 
-        df.at[i,'unique reference number'] = data_list[0]
-        df.at[i,'name'] = data_list[1]
-        df.at[i,'pointX classification code'] = data_list[2]
+        df.at[i, 'unique reference number'] = data_list[0]
+        df.at[i, 'name'] = data_list[1]
+        df.at[i, 'pointX classification code'] = data_list[2]
 
         lat, lon = transformer.transform(data_list[3], data_list[4])
         print('Uploaded ' + str(i) + '/' + str(len(df.index)) + ' rows', end='\r') # Sends a message to th terminal to show how quickly the rows are being cleaned
 
-        df.at[i,'lon'] = lon
-        df.at[i,'lat'] = lat
-        df.at[i,'positional accuracy code'] = data_list[5]
+        df.at[i, 'lon'] = lon
+        df.at[i, 'lat'] = lat
+        df.at[i, 'positional accuracy code'] = data_list[5]
 
-    print('Uploaded ' + str(i + 1) + '/' + str(len(df.index)) + ' rows', end='\r')
-
-    df.drop(index_bin) # Removes all rows with incomplete data
+    print('Uploaded ' + str(i + 1) + '/' + str(len(df.index)) + ' rows', end='\n')
 
     return df
 
@@ -97,3 +98,20 @@ def classify_data(level, pointX_code):
             return classes[pointX_code[4:]]
     except Exception as e:
         print(e)
+
+def add_cluster_ids(df):
+    coords_array = []
+    for i in range(0, len(df.index)):
+        if i not in index_bin:
+            coords_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])])
+            print('Clustered ' + str(i) + '/' + str(len(df.index)) + ' rows', end='\r') # Sends a message to th terminal to show how quickly the rows are being clustered
+
+    print('Clustered ' + str(i + 1) + '/' + str(len(df.index)) + ' rows', end='\r')
+    
+    cluster_ids = cluster.DBSCAN(coords_array)
+
+    df['cluster id'] = None
+    for i in range(0, len(df.index) - len(index_bin)):
+        df.at[i, 'cluster id'] = cluster_ids[i]
+
+    return df
