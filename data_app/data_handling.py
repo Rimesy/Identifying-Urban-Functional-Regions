@@ -22,7 +22,7 @@ def parse_POI_contents(contents, filename):
         print(e)
         return html.Div(['There was an error processing this file.'])
     
-    return df # df is DataFrame (https://pandas.pydata.org/docs/reference/frame.html)
+    return df # df is DataFrame https://pandas.pydata.org/docs/reference/frame.html
 
 # Function parse_map_contents converts a .tif file into a DataFrame
 """

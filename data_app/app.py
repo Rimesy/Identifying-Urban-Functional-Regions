@@ -9,7 +9,6 @@ app.layout = [
     dcc.Upload(id='POI_file_input', children=html.Button('Upload')), # Opens pop-up for upload when clicked
     html.Hr(), # Horizontal line
     html.Div(id='data_output'), # Displays the data table
-
 ]
 
 @callback(
@@ -22,7 +21,7 @@ def update_output(contents, filename):
     if contents is not None:
         df = data_handling.parse_POI_contents(contents, filename) # Parse the POI data
         df = data_handling.clean_POI_data(df) # Clean the POI data
-        df = data_handling.add_cluster_ids(df)
+        # df = data_handling.add_cluster_ids(df)
         children = [data_handling.data_display(df, filename)] 
         return children
 
