@@ -1,5 +1,6 @@
 from dash import Dash, html, dcc, callback, Input, Output, State
 import data_handling
+import map_handling
 
 app = Dash()
 
@@ -22,7 +23,7 @@ def update_output(contents, filename):
         df = data_handling.parse_POI_contents(contents, filename) # Parse the POI data
         df = data_handling.clean_POI_data(df) # Clean the POI data
         df = data_handling.add_cluster_ids(df, 1) # Cluster POIs
-        children = [data_handling.data_display(df, filename)] 
+        children = [data_handling.data_display(df, filename), map_handling.create_map(df, filename)] 
         return children
 
 if __name__ == '__main__':
