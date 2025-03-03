@@ -23,7 +23,7 @@ def DBSCAN(data):
     X = np.array(data)
 
     # DBSCAN info https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html 
-    clustering = skl.cluster.DBSCAN(eps = 0.00005, min_samples = 10).fit(X)
+    clustering = skl.cluster.DBSCAN(eps = 0.05, min_samples = 7).fit(X)
     cluster_array = clustering.labels_
 
     return cluster_array

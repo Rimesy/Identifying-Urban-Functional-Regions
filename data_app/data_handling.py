@@ -90,28 +90,67 @@ def classify_data(level, pointX_code):
     from classification import groups, categories, classes
 
     try:
-        if level == '1':
+        if level == 1:
             return groups[pointX_code[:2]]
-        elif level == '2':
+        elif level == 2:
             return categories[pointX_code[2:4]]
-        elif level == '3':
+        elif level == 3:
             return classes[pointX_code[4:]]
     except Exception as e:
         print(e)
 
-def add_cluster_ids(df):
-    coords_array = []
+def add_cluster_ids(df, level):
+    from classification import groups, categories, classes
+
+    df['cluster id'] = None
+    num_clusters = 0
+
+    try:
+        if level == 1:
+            for group in groups:
+                coord_array = []
+                index_array = []
+
+                for i in range(0, len(df.index)):
+                    if (i not in index_bin) and (groups[group] == classify_data(1, df.at[i, 'pointX classification code'][:2])):
+                        coord_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])])
+                        index_array.append(i)
+
+                cluster_ids = cluster.DBSCAN(coord_array)
+                if -1 in cluster_ids: num_clusters += len(set(cluster_ids)) - 1
+                elif -1 not in cluster_ids: num_clusters += len(set(cluster_ids))
+
+                for i in range(0, len(index_array) - 1):
+                    df.at[index_array[i], 'cluster id'] = cluster_ids[i] + num_clusters
+
+            return df
+
+        elif level == 2:
+
+            pass
+        elif level == 3:
+            pass
+    except Exception as e:
+        print(e)
+
+        return df
+
+# Function add_cluster_ids makes an array of POI coordinates, passes them through the DBSCAN algorithm, and adds the rsulting cluster ids to the data table
+"""
+def add_cluster_ids(df, level):
+    coord_array = []
     for i in range(0, len(df.index)):
         if i not in index_bin:
-            coords_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])])
+            coord_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])])
             print('Clustered ' + str(i) + '/' + str(len(df.index)) + ' rows', end='\r') # Sends a message to th terminal to show how quickly the rows are being clustered
 
     print('Clustered ' + str(i + 1) + '/' + str(len(df.index)) + ' rows', end='\r')
     
-    cluster_ids = cluster.DBSCAN(coords_array)
+    cluster_ids = cluster.DBSCAN(coord_array)
 
     df['cluster id'] = None
     for i in range(0, len(df.index) - len(index_bin)):
         df.at[i, 'cluster id'] = cluster_ids[i]
 
     return df
+"""
