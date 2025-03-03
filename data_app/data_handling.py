@@ -81,14 +81,15 @@ def clean_POI_data(df):
         df.at[i, 'lat'] = lat
         df.at[i, 'positional accuracy code'] = data_list[5]
 
-    print('Uploaded ' + str(i + 1) + '/' + str(len(df.index)) + ' rows', end='\n')
+    print('Uploaded ' + str(i + 1 - len(index_bin)) + '/' + str(len(df.index)) + ' rows', end='\n')
 
     return df
 
-# Function classify_data returns the classification of a POI using its pointX code and a chosen levelof classification
+# Function classify_data returns the classification of a POI using its pointX code and a chosen level of classification
 def classify_data(level, pointX_code):
     from classification import groups, categories, classes
 
+    # The 8 digit pointX code is broken down to find the name of the classification
     try:
         if level == 1:
             return groups[pointX_code[:2]]
@@ -99,11 +100,12 @@ def classify_data(level, pointX_code):
     except Exception as e:
         print(e)
 
+# Function add_cluster_ids makes an array of POI coordinates, passes them through the DBSCAN algorithm, and adds the resulting cluster ids to the data table
 def add_cluster_ids(df, level):
     from classification import groups, categories, classes
 
-    df['cluster id'] = None
-    num_clusters = 0
+    df['cluster id'] = None # Makes a new column in the dataframe to hold the cluster ids
+    num_clusters = 0 # The reason for num_clusters is that I need a way to differentiate between the clusters made in each group
 
     try:
         if level == 1:
@@ -112,45 +114,33 @@ def add_cluster_ids(df, level):
                 index_array = []
 
                 for i in range(0, len(df.index)):
+                    # This if statement finds any POIs that are within the classification of the group (and not in th index bin), and adds the necessary data to the arrays ready for clustering
                     if (i not in index_bin) and (groups[group] == classify_data(1, df.at[i, 'pointX classification code'][:2])):
-                        coord_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])])
+                        coord_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])]) # Adds the lat and long coordinate pair to the coords array
                         index_array.append(i)
 
                 cluster_ids = cluster.DBSCAN(coord_array)
-                if -1 in cluster_ids: num_clusters += len(set(cluster_ids)) - 1
-                elif -1 not in cluster_ids: num_clusters += len(set(cluster_ids))
+
+                # This if statement eliminates the possibility of -1 counting as a cluster instead the tag for outliers
+                if -1 in cluster_ids:
+                    num_clusters += len(set(cluster_ids)) - 1
+                else:
+                    num_clusters += len(set(cluster_ids))
 
                 for i in range(0, len(index_array) - 1):
                     df.at[index_array[i], 'cluster id'] = cluster_ids[i] + num_clusters
 
             return df
 
+        # TODO: Level 2
         elif level == 2:
-
             pass
+        
+        # TODO: Level 3
         elif level == 3:
             pass
+
     except Exception as e:
         print(e)
 
         return df
-
-# Function add_cluster_ids makes an array of POI coordinates, passes them through the DBSCAN algorithm, and adds the rsulting cluster ids to the data table
-"""
-def add_cluster_ids(df, level):
-    coord_array = []
-    for i in range(0, len(df.index)):
-        if i not in index_bin:
-            coord_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])])
-            print('Clustered ' + str(i) + '/' + str(len(df.index)) + ' rows', end='\r') # Sends a message to th terminal to show how quickly the rows are being clustered
-
-    print('Clustered ' + str(i + 1) + '/' + str(len(df.index)) + ' rows', end='\r')
-    
-    cluster_ids = cluster.DBSCAN(coord_array)
-
-    df['cluster id'] = None
-    for i in range(0, len(df.index) - len(index_bin)):
-        df.at[i, 'cluster id'] = cluster_ids[i]
-
-    return df
-"""
