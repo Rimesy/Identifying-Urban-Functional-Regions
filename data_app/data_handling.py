@@ -5,6 +5,7 @@ import pyproj
 import pandas as pd
 import cluster
 
+
 # Function parse_contents reads a file and strips it to leave the data we want to use
 def parse_POI_contents(contents, filename):
     content_type, content_string = contents.split(',')
@@ -24,6 +25,7 @@ def parse_POI_contents(contents, filename):
     
     return df # df is DataFrame https://pandas.pydata.org/docs/reference/frame.html
 
+
 # Function parse_map_contents converts a .tif file into a DataFrame
 """
 def parse_map_contents(contents, filename):
@@ -36,25 +38,28 @@ def parse_map_contents(contents, filename):
     return df
 """
 
+
 # Function data_table creates a visual data table to be displayed in the dash app
 def data_display(df, filename):
     # Return a html <div> with the dash table nested
     return html.Div([
-        html.H5(filename),
+        html.H5(children=filename, style={'margin-top':'50px'}),
 
         # Display DataFrame as a table of i columns
         dash_table.DataTable(
             df.to_dict('records'),
-            [{'name': i, 'id': i} for i in df.columns]
+            [{'name': i, 'id': i} for i in df.columns],
+            page_size=25
         ),
 
         html.Hr(),  # horizontal line
     ])
 
+
 # Function clean_POI_data takes the the data we need from the DataFrame
 def clean_POI_data(df):
     df.rename(columns={'A': 'unique reference number', 'B': 'name', 'C': 'pointX classification code', 'D': 'lon', 'E': 'lat'}, inplace=True)
-    df['positional accuracy code'] = None # Add sixth column needed
+    df['group'] = None # Add sixth column needed
 
     global index_bin
     index_bin = [] # Bin for indexes that hold incomplete data, and therefore need to be removed
@@ -79,11 +84,12 @@ def clean_POI_data(df):
 
         df.at[i, 'lon'] = lon
         df.at[i, 'lat'] = lat
-        df.at[i, 'positional accuracy code'] = data_list[5]
+        df.at[i, 'group'] = classify_data(1, data_list[2])
 
     print('Uploaded ' + str(i + 1 - len(index_bin)) + '/' + str(len(df.index)) + ' rows', end='\n')
 
     return df
+
 
 # Function classify_data returns the classification of a POI using its pointX code and a chosen level of classification
 def classify_data(level, pointX_code):
@@ -99,6 +105,7 @@ def classify_data(level, pointX_code):
             return classes[pointX_code[4:]]
     except Exception as e:
         print(e)
+
 
 # Function add_cluster_ids makes an array of POI coordinates, passes them through the DBSCAN algorithm, and adds the resulting cluster ids to the data table
 def add_cluster_ids(df, level):
