@@ -170,6 +170,7 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+clusters.json
 
 # Documents
 initial_plan_guide.pdf
