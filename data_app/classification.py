@@ -8,6 +8,17 @@ groups = {'01': 'Accommodation, eating and drinking',
           '09': 'Retail', 
           '10': 'Transport'}
 
+color_map = {
+          'Accommodation, eating and drinking': 'yellow', 
+          'Commercial services': 'orange', 
+          'Attractions': 'darkviolet', 
+          'Sport and entertainment': 'limegreen', 
+          'Education and health': 'red', 
+          'Public Infrastructure': 'aquamarine', 
+          'Manufacturing and production': 'slategray', 
+          'Retail': 'violet', 
+          'Transport': 'steelblue'}
+
 categories = {'01': 'Accommodation', 
               '02': 'Eating and drinking', 
               '03': 'Construction services', 

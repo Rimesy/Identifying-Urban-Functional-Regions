@@ -5,7 +5,6 @@ import pyproj
 import pandas as pd
 import cluster
 
-
 # Function parse_contents reads a file and strips it to leave the data we want to use
 def parse_POI_contents(contents, filename):
     content_type, content_string = contents.split(',')
@@ -135,9 +134,14 @@ def add_cluster_ids(df, level):
                     num_clusters += len(set(cluster_ids))
 
                 for i in range(0, len(index_array) - 1):
-                    df.at[index_array[i], 'cluster id'] = cluster_ids[i] + num_clusters
+                    cluster_ids[i] += num_clusters
+                    df.at[index_array[i], 'cluster id'] = cluster_ids[i]
 
-            return df
+            lon, lat, colors = cluster.create_cluster_coords(df, set(cluster_ids), index_bin)
+
+            cluster_data = [lon, lat, colors]
+
+            return df, cluster_data
 
         # TODO: Level 2
         elif level == 2:
