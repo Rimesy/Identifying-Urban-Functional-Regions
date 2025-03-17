@@ -1,3 +1,4 @@
+# INFO: UPDATE DOCUMENTATION
 from dash import Dash, html, dcc, callback, Input, Output, State
 import data_handling
 import map_handling
@@ -9,10 +10,11 @@ app.layout = [
     html.Label(children='Upload POI data:', id='POI_upload_label', style={'textAlign':'centre'}),
     dcc.Upload(id='POI_file_input', children=html.Button('Upload')), # Opens pop-up for upload when clicked
     html.Hr(), # Horizontal line
+    # TODO: See how much customisation can be done to: the cluster sizes, hiding POIs
     dcc.Checklist(id = 'checklist', options = [
         {'label': 'Hide clusters', 'value': 'clusters'},
     ],
-    value = ['clusters'],
+    value = ['clusters'], # Default checklist has Hide clusters ticked
     inline = True),
     html.Hr(),
     html.Div(id='data_output'), # Displays the data table

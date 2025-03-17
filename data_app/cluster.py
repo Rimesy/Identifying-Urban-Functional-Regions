@@ -11,7 +11,7 @@ def haversine_distance(acoords, bcoords):
     bcoords_in_radians = [radians(_) for _ in bcoords]
 
     distance = skl.metrics.pairwise.haversine_distances([acoords_in_radians, bcoords_in_radians])
-    distance = distance * 6371000/1000
+    distance = distance * 6371000/1000 # Pretty sure this just converts to kilometers
 
     return distance
 
@@ -27,15 +27,16 @@ def euclidean_distance(acoords, bcoords):
 def DBSCAN(data):
     X = np.array(data)
 
-    # DBSCAN info https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html 
-    clustering = skl.cluster.DBSCAN(eps = 0.003, min_samples = 7).fit(X)
+    # DBSCAN info https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html
+    clustering = skl.cluster.DBSCAN(eps = 0.003, min_samples = 7).fit(X) # TODO: Maximum cluster size??
     cluster_array = clustering.labels_
 
     return cluster_array
 
 
-def create_cluster_coords(df, array, index_bin):
-    # print("Array: " + str(array)) # TODO: check why array isn't parsing properly
+# Function create_cluster_data finds the coordintes of the four corners of each cluster in an array of clusters, as well as the color associated with the group of the cluster
+def create_cluster_data(df, array, index_bin):
+    # print("Array: " + str(array)) # FIXME: Check why array isn't parsing properly
 
     lon_coords = []
     lat_coords = []
@@ -43,20 +44,24 @@ def create_cluster_coords(df, array, index_bin):
 
     for cluster_id in array:
         cluster_id = cluster_id.astype('int32')
-        # print("Cluster id: " + str(cluster_id))
 
-        id_array = []
+        id_array = [] # List to hold all of the POIs within the cluster
         for i in range(0, len(df.index)):
+            # This if statement is true if the POI is in the cluster
             if (i not in index_bin) and (df.at[i, 'cluster id'] == cluster_id):
                 id_array.append(i)
 
+        # The rest of the code within the for loop doesn't work if the id_array is empty
         if id_array == []:
             continue
 
+        # TODO: Change shape from rectangle to polygon
+        # Set the corner coordinates
         north = df.at[id_array[0], 'lat']
         south = df.at[id_array[0], 'lat']
         east = df.at[id_array[0], 'lon']
         west = df.at[id_array[0], 'lon']
+        # This for loop checks if the coordinates of each POI extend the bounds of the cluster
         for _id in id_array:
             if df.at[_id, 'lat'] > north: north = df.at[_id, 'lat']
             if df.at[_id, 'lat'] < south: south = df.at[_id, 'lat']
@@ -75,8 +80,8 @@ def create_cluster_coords(df, array, index_bin):
         south, west ----- south, east
         """
 
+        # Assign a color from the color map
         group = data_handling.classify_data(1, df.at[id_array[0], 'pointX classification code'])
         colors.append(color_map[group])
 
     return lon_coords, lat_coords, colors
-

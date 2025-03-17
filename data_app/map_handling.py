@@ -1,16 +1,7 @@
 from dash import html, dcc
 import plotly.express as px
 import plotly.graph_objects as go
-import pandas as pd
-import cluster
 from classification import color_map
-
-def create_shaded_regions(df, cluster_ids):
-    cluster_shapes = []
-    for id in set(cluster_ids):
-        cluster_shapes.append([id, cluster.get_cluster_shape(df, id)])
-    
-    df_shapes = pd.DataFrame(data=cluster_shapes, columns=['id', 'north', 'south', 'east', 'west'])
 
 # Function create_map creates a map figure with the POI data overlaid 
 def create_map(poi_data, cluster_data, checklist_value, filename):
@@ -27,16 +18,19 @@ def create_map(poi_data, cluster_data, checklist_value, filename):
     fig.update_layout(map_style = "open-street-map") # The map figure uses the open street map base style
     fig.update_layout(margin = {"r":0,"t":0,"l":0,"b":0})
 
+    # Checks if the hide clusters checkbox is ticked
     if 'clusters' not in checklist_value:
         # TODO: Look at implementing geojson functionality
-        lons, lats, colors = cluster_data
+        lons, lats, colors = cluster_data # Expands and assigns values from the cluster data
         for longitude, latitude, color in zip(lons, lats, colors):
+            # Using add_trace allows multiple layers on the map
             fig.add_trace(
+                # go.scattermap is different from px.scatter_map, don't ask how, but go has the capability to draw and fill lines
                 go.Scattermap(
             mode = 'lines', fill = 'toself', line = {'color': color},
             lon = longitude,
             lat = latitude,
-            showlegend = False))
+            showlegend = False)) # Show legend is set to false so that the hover data for clusters is at a minimum
 
     # Throughput html elements that display the map
     return html.Div([

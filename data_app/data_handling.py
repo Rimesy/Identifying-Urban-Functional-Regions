@@ -115,9 +115,10 @@ def add_cluster_ids(df, level):
 
     try:
         if level == 1:
+            # FIXME: Create cluster id array outside of for loop
             for group in groups:
-                coord_array = []
-                index_array = []
+                coord_array = [] # List of coordinates that'll be inputted into the DBSCAN cluster
+                index_array = [] # List that holds the indexes of all POIs that need updating
 
                 for i in range(0, len(df.index)):
                     # This if statement finds any POIs that are within the classification of the group (and not in th index bin), and adds the necessary data to the arrays ready for clustering
@@ -125,7 +126,7 @@ def add_cluster_ids(df, level):
                         coord_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])]) # Adds the lat and long coordinate pair to the coords array
                         index_array.append(i)
 
-                cluster_ids = cluster.DBSCAN(coord_array)
+                cluster_ids = cluster.DBSCAN(coord_array) # FIXME: Rename this list
 
                 # This if statement eliminates the possibility of -1 counting as a cluster instead the tag for outliers
                 if -1 in cluster_ids:
@@ -135,11 +136,15 @@ def add_cluster_ids(df, level):
 
                 for i in range(0, len(index_array) - 1):
                     cluster_ids[i] += num_clusters
+                    # FIXME: Add above value to cluster id array
                     df.at[index_array[i], 'cluster id'] = cluster_ids[i]
+                print('Group id(' + group + ') clustered', end='\r')
+            
+            print('Group id(10) clustered', end='\n')
 
-            lon, lat, colors = cluster.create_cluster_coords(df, set(cluster_ids), index_bin)
-
-            cluster_data = [lon, lat, colors]
+            # Assigns values from the cluster data - lon, lat are 2D arrays that hold the coordinates for square clusters, colors holds a list of cluster colors
+            lon, lat, colors = cluster.create_cluster_data(df, set(cluster_ids), index_bin)
+            cluster_data = [lon, lat, colors] # Zips the variables for the sake of cleanliness
 
             return df, cluster_data
 
