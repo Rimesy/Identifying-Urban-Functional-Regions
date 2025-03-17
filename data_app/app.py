@@ -14,7 +14,7 @@ app.layout = [
     dcc.Checklist(id = 'checklist', options = [
         {'label': 'Hide clusters', 'value': 'clusters'},
     ],
-    value = ['clusters'], # Default checklist has Hide clusters ticked
+    value = [], # Default checklist has Hide clusters unticked
     inline = True),
     html.Hr(),
     html.Div(id='data_output'), # Displays the data table
@@ -32,7 +32,9 @@ def update_output(contents, value, filename):
         df = data_handling.parse_POI_contents(contents, filename) # Parse the POI data
         df = data_handling.clean_POI_data(df) # Clean the POI data
         df, cluster_data = data_handling.add_cluster_ids(df, 1) # Cluster POIs
+        
         children = [map_handling.create_map(df, cluster_data, value, filename), data_handling.data_display(df, filename)]
+        
         return children
 
 if __name__ == '__main__':

@@ -36,7 +36,6 @@ def DBSCAN(data):
 
 # Function create_cluster_data finds the coordintes of the four corners of each cluster in an array of clusters, as well as the color associated with the group of the cluster
 def create_cluster_data(df, array, index_bin):
-    # print("Array: " + str(array)) # FIXME: Check why array isn't parsing properly
 
     lon_coords = []
     lat_coords = []

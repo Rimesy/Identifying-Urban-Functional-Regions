@@ -25,19 +25,6 @@ def parse_POI_contents(contents, filename):
     return df # df is DataFrame https://pandas.pydata.org/docs/reference/frame.html
 
 
-# Function parse_map_contents converts a .tif file into a DataFrame
-"""
-def parse_map_contents(contents, filename):
-    content_type, content_string = contents.split(',')
-
-    dtm_pre_arr = rxr.open_rasterio(content_string, masked=True).squeeze().rio.reproject('EPSG:3857')
-    converted_df = dtm_pre_arr.to_dataframe(name='map').reset_index()
-    df = converted_df.dropna().reset_index(drop=True)
-
-    return df
-"""
-
-
 # Function data_table creates a visual data table to be displayed in the dash app
 def data_display(df, filename):
     # Return a html <div> with the dash table nested
@@ -115,7 +102,7 @@ def add_cluster_ids(df, level):
 
     try:
         if level == 1:
-            # FIXME: Create cluster id array outside of for loop
+            cluster_ids = []
             for group in groups:
                 coord_array = [] # List of coordinates that'll be inputted into the DBSCAN cluster
                 index_array = [] # List that holds the indexes of all POIs that need updating
@@ -126,18 +113,20 @@ def add_cluster_ids(df, level):
                         coord_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])]) # Adds the lat and long coordinate pair to the coords array
                         index_array.append(i)
 
-                cluster_ids = cluster.DBSCAN(coord_array) # FIXME: Rename this list
+                temp_cluster_ids = cluster.DBSCAN(coord_array)
 
+                num_clusters += len(set(temp_cluster_ids))
                 # This if statement eliminates the possibility of -1 counting as a cluster instead the tag for outliers
                 if -1 in cluster_ids:
-                    num_clusters += len(set(cluster_ids)) - 1
-                else:
-                    num_clusters += len(set(cluster_ids))
+                    num_clusters -= 1
 
                 for i in range(0, len(index_array) - 1):
-                    cluster_ids[i] += num_clusters
-                    # FIXME: Add above value to cluster id array
-                    df.at[index_array[i], 'cluster id'] = cluster_ids[i]
+                    if temp_cluster_ids[i] != -1:
+                        temp_cluster_ids[i] += num_clusters
+                        cluster_ids.append(temp_cluster_ids[i])
+                    
+                    df.at[index_array[i], 'cluster id'] = temp_cluster_ids[i] # Updates the DataFrame to give the POI a cluster id
+
                 print('Group id(' + group + ') clustered', end='\r')
             
             print('Group id(10) clustered', end='\n')
