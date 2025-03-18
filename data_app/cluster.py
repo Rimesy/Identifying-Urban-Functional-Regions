@@ -24,11 +24,11 @@ def euclidean_distance(acoords, bcoords):
 
 
 # Function cluster takes in an array of lat lon pairs and clusters them based on euclidean distance
-def DBSCAN(data):
+def DBSCAN(data, size):
     X = np.array(data)
 
     # DBSCAN info https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html
-    clustering = skl.cluster.DBSCAN(eps = 0.003, min_samples = 7).fit(X) # TODO: Maximum cluster size??
+    clustering = skl.cluster.DBSCAN(eps = size, min_samples = 5).fit(X) # TODO: Maximum cluster size??
     cluster_array = clustering.labels_
 
     return cluster_array

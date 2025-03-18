@@ -94,7 +94,7 @@ def classify_data(level, pointX_code):
 
 
 # Function add_cluster_ids makes an array of POI coordinates, passes them through the DBSCAN algorithm, and adds the resulting cluster ids to the data table
-def add_cluster_ids(df, level):
+def add_cluster_ids(df, level, slider_value):
     from classification import groups, categories, classes
 
     df['cluster id'] = None # Makes a new column in the dataframe to hold the cluster ids
@@ -113,7 +113,7 @@ def add_cluster_ids(df, level):
                         coord_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])]) # Adds the lat and long coordinate pair to the coords array
                         index_array.append(i)
 
-                temp_cluster_ids = cluster.DBSCAN(coord_array)
+                temp_cluster_ids = cluster.DBSCAN(coord_array, slider_value)
 
                 num_clusters += len(set(temp_cluster_ids))
                 # This if statement eliminates the possibility of -1 counting as a cluster instead the tag for outliers
