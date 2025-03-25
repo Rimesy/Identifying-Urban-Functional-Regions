@@ -1,0 +1,77 @@
+body {
+    font-family: Arial;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2%;
+    font-size: 4cap;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 2%;
+    font-size: 1cap;
+}
+
+div.download-button-div {
+    margin-bottom: 2%;
+}
+
+.download-button {
+    position: relative;
+    left: 50%;
+    border-radius: 5px;
+    transform: translate(-50%, 0%);
+    padding: 2% 30%;
+    background-color: #bdbdbd;
+    transition-duration: 0.4s;
+    font-size: 2cap;
+}
+
+.download-button:hover {
+    background-color: #ffffff;
+}
+div.toolbar-div {
+    display: flex;
+    justify-content: center;
+    align-items: 'center';
+}
+
+div.checklist-div {
+    border: 2px solid black;
+    border-radius: 5px;
+    float: left;
+    padding: 1% 1%;
+    margin-right: 2%;
+}
+
+div.dropdown-div {
+    border: 2px solid black;
+    border-radius: 5px;
+    float: left;
+    padding: 1% 1%;
+    margin-right: 2%;
+}
+
+div.slider-div {
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    float: left;
+    padding: 1% 1%;
+    width: 25%;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+    float: inline-end;
+    width: 80%;
+}
+
+div.data-div {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 2%;
+}
