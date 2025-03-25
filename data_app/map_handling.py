@@ -20,7 +20,6 @@ def create_map(poi_data, cluster_data, checklist_value, dropdown_value, filename
 
     # Checks if the hide clusters checkbox is ticked
     if 'clusters' not in checklist_value:
-        # TODO: Look at implementing geojson functionality
         lons, lats, colors = cluster_data # Expands and assigns values from the cluster data
         for longitude, latitude, color in zip(lons, lats, colors):
             group = list(color_map.keys())[list(color_map.values()).index(color)]
