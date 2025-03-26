@@ -1,0 +1,16 @@
+Your use of the data is subject to the conditions of the Open Government Licence for public sector information at http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ 
+
+
+English and Welsh census data sourced from: https://www.ons.gov.uk/
+Scottish census data sourced from: https://www.nrscotland.gov.uk/
+
+
+You must acknowledge the source of the Information in your media, product or application by including or linking to the following attribution statements as appropriate and, where possible, provide a link to the OGL v.3
+  At a minimum you must use the following general attribution:
+      Contains public sector information licensed under the Open Government Licence v3.0
+  Alternatively, and more completely, you should use an appropriate mix of the following:
+      Contains National Statistics data © Crown copyright and database right [year]
+      Contains NRS data © Crown copyright and database right [year]
+      Contains OS data © Crown copyright [and database right] (year)
+
+

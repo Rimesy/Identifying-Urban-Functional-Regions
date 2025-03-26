@@ -1,0 +1,215 @@
+********************************************************************
+
+EDINA DIGIMAP:
+
+DIGITAL DATA SUPPLY
+
+********************************************************************
+
+
+This data is distributed under licence by:
+
+    EDINA
+    University of Edinburgh
+    https://edina.ac.uk
+
+    Tel:    0131 650 3302
+    Fax:    0131 650 3308
+    Email:  digimap@ed.ac.uk
+		
+
+
+---------------------------------------------------------
+
+CONTENTS
+
+You will have received the data files listed below, each product and area has
+its own folder. Note that each data folder contains a conditions.txt file
+which states the conditions for use of the data within. These conditions can
+vary between different data products.
+
+
+
+-------------------------------------------------------------------------------
+Folder:           ons-accommodation_5930945
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Accommodation type - Households
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-accommodation_5930945/ons-accommodation_5930945.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-age_5930946
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Age by single year
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-age_5930946/ons-age_5930946.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-long-term-health_5930952
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Long-term health problem or disability
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-long-term-health_5930952/ons-long-term-health_5930952.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-economic_5930950
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Economic activity
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-economic_5930950/ons-economic_5930950.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-tenure_5930957
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Tenure
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-tenure_5930957/ons-tenure_5930957.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-social-grade_5930956
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Social grade - Household reference person
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-social-grade_5930956/ons-social-grade_5930956.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-qualifications_5930955
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Highest level of qualification
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-qualifications_5930955/ons-qualifications_5930955.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-pop-density_5930954
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Population density
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-pop-density_5930954/ons-pop-density_5930954.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-occupancy_5930953
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Occupancy rating
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-occupancy_5930953/ons-occupancy_5930953.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-hh-comp_5930951
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Household composition
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-hh-comp_5930951/ons-hh-comp_5930951.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-country-birth_5930949
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Country of birth
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-country-birth_5930949/ons-country-birth_5930949.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-children_5930948
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Families with dependent children
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-children_5930948/ons-children_5930948.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+    -------------------------------------------------------------------------------
+Folder:           ons-car-availability_5930947
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Date Ordered:     25 March 2025 at 13:16:23
+Product:          Car or van availability to household
+Version:          2011 Census
+Format:           CSV
+Theme:            N/A
+Area:             146.818014 square kilometres
+Chunks:
+ 
+Filename:         ons-car-availability_5930947/ons-car-availability_5930947.csv
+Extent:           311275.8, 173146.4 - 325069.3, 183790.4
+Last Amended:     27 March 2011
+     
