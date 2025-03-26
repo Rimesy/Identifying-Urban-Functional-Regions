@@ -28,7 +28,7 @@ def create_map(poi_data, cluster_data, checklist_value, dropdown_value, filename
                 fig.add_trace(
                     # go.scattermap is different from px.scatter_map, don't ask how, but go has the capability to draw and fill lines
                     go.Scattermap(mode = 'lines', fill = 'toself', line = {'color': color}, lon = longitude, lat = latitude, showlegend = False)) # Show legend is set to false so that the hover data for clusters is at a minimum
-
+    # TODO: Show chosen layer of se data using Choropleth Map with go.Choropleth
     # Throughput html elements that display the map
     return html.Div([
         dcc.Graph(figure=fig),

@@ -2,7 +2,7 @@ import numpy as np
 from scipy.spatial import ConvexHull
 from math import radians
 import sklearn as skl
-import data_handling
+import data_utilities
 from classification import color_map
 
 
@@ -103,7 +103,7 @@ def create_cluster_data(df, array_of_clusters, index_bin):
             shape_lon_coords.append(boundary_lons)
 
             # Assign a color from the color map
-            group = data_handling.classify_data(1, df.at[poi_id_array[0], 'pointX classification code'])
+            group = data_utilities.classify_data(1, df.at[poi_id_array[0], 'pointX classification code'])
             shape_colors.append(color_map[group])
 
         except Exception as e:

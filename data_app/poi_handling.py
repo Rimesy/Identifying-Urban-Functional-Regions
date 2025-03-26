@@ -1,55 +1,16 @@
-from dash import html, dash_table
-import io
-import base64
 import pyproj
-import pandas as pd
 import cluster
-
-# Function parse_contents reads a file and strips it to leave the data we want to use
-def parse_POI_contents(contents, filename):
-    content_type, content_string = contents.split(',')
-    decoded = base64.b64decode(content_string) # Decodes the data with base64 
-
-    # Allow three file types to be uploaded
-    try:
-        if 'csv' in filename: # .csv format
-            df = pd.read_csv(io.StringIO(decoded.decode('utf-8')))
-        elif 'xls' in filename: # .xls format
-            df = pd.read_excel(io.BytesIO(decoded))
-        elif 'json' in filename: # .json format
-            df = pd.read_json(io.StringIO(decoded.decode('utf-8')))
-    except Exception as e:
-        print(e)
-        return html.Div(['There was an error processing this file.'])
-    
-    return df # df is DataFrame https://pandas.pydata.org/docs/reference/frame.html
-
-
-# Function data_table creates a visual data table to be displayed in the dash app
-def data_display(df, filename):
-    # Return a html <div> with the dash table nested
-    return html.Div([
-        html.H5(children=filename, style={'margin-top':'50px'}),
-
-        # Display DataFrame as a table of i columns
-        dash_table.DataTable(
-            df.to_dict('records'),
-            [{'name': i, 'id': i} for i in df.columns],
-            page_size=25
-        ),
-
-        html.Hr(),  # horizontal line
-    ])
+import data_utilities
 
 
 # Function clean_POI_data takes the the data we need from the DataFrame
 def clean_POI_data(df):
-    df.rename(columns={'A': 'unique reference number', 'B': 'name', 'C': 'pointX classification code', 'D': 'lon', 'E': 'lat'}, inplace=True)
-    df['group'] = None # Add sixth column needed
-
     global index_bin
     index_bin = [] # Bin for indexes that hold incomplete data, and therefore need to be removed
     transformer = pyproj.Transformer.from_crs('EPSG:27700', 'EPSG:4326') # The transformer allows for BNG(27700) coordinates to be converted to Lat/Long(4326) coordinates
+
+    df.rename(columns={'A': 'unique reference number', 'B': 'name', 'C': 'pointX classification code', 'D': 'lon', 'E': 'lat'}, inplace=True)
+    df['group'] = None # Add sixth column needed
 
     for i in range(0, len(df.index)):
         line = df.at[i, 'unique reference number'] # Create a String variable of the data in row i of the DataFrame
@@ -70,27 +31,11 @@ def clean_POI_data(df):
 
         df.at[i, 'lon'] = lon
         df.at[i, 'lat'] = lat
-        df.at[i, 'group'] = classify_data(1, data_list[2])
+        df.at[i, 'group'] = data_utilities.classify_data(1, data_list[2])
 
     print('Uploaded ' + str(i + 1 - len(index_bin)) + '/' + str(len(df.index)) + ' rows', end='\n')
 
     return df
-
-
-# Function classify_data returns the classification of a POI using its pointX code and a chosen level of classification
-def classify_data(level, pointX_code):
-    from classification import groups, categories, classes
-
-    # The 8 digit pointX code is broken down to find the name of the classification
-    try:
-        if level == 1:
-            return groups[pointX_code[:2]]
-        elif level == 2:
-            return categories[pointX_code[2:4]]
-        elif level == 3:
-            return classes[pointX_code[4:]]
-    except Exception as e:
-        print(e)
 
 
 # Function add_cluster_ids makes an array of POI coordinates, passes them through the DBSCAN algorithm, and adds the resulting cluster ids to the data table
@@ -109,7 +54,7 @@ def add_cluster_ids(df, level, slider_value):
 
                 for i in range(0, len(df.index)):
                     # This if statement finds any POIs that are within the classification of the group (and not in th index bin), and adds the necessary data to the arrays ready for clustering
-                    if (i not in index_bin) and (groups[group] == classify_data(1, df.at[i, 'pointX classification code'][:2])):
+                    if (i not in index_bin) and (groups[group] == data_utilities.classify_data(1, df.at[i, 'pointX classification code'][:2])):
                         coord_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])]) # Adds the lat and long coordinate pair to the coords array
                         index_array.append(i)
 

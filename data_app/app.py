@@ -1,17 +1,25 @@
 # INFO: UPDATE DOCUMENTATION
 from dash import Dash, html, dcc, callback, Input, Output, State
-import data_handling
+import data_utilities
 import map_handling
+import poi_handling
 
 app = Dash()
 
 app.layout = [
     html.H1(children='Interactive Functional Region Map'),
     html.Div([
-        dcc.Upload(id='POI_file_input', children=html.Button('Choose file / Drag & drop', className='download-button'))# Opens pop-up for upload when clicked
-    ], className='download-button-div'),
+        html.Div([
+        dcc.Upload(id='poi_file_input', children=html.Button('Choose POI file / Drag & drop', className='upload-button'))# Opens pop-up for upload when clicked
+        ], className='upload-button-div'),
+
+        html.Div([
+        dcc.Upload(id='se_file_input', children=html.Button('Choose Socio-Economic file / Drag & drop', className='upload-button'))# Opens pop-up for upload when clicked
+        ], className='upload-button-div'),
+        ], className='upload-div'),
 
     # TODO: Change minimum POIs for clusters
+    # TODO: Add dropdown for se layers (multi=False)
     html.Div([
         html.Div([
             dcc.Checklist(id = 'checklist', options = [
@@ -39,20 +47,21 @@ app.layout = [
 
 @callback(
     Output('data_output', 'children'),
-    Input('POI_file_input', 'contents'),
+    Input('poi_file_input', 'contents'),
+    Input('se_file_input', 'contents'),
     Input('checklist', 'value'),
     Input('dropdown', 'value'),
     Input('slider', 'value'),
-    State('POI_file_input', 'filename'),
+    State('poi_file_input', 'filename'),
 )
 
-def update_output(contents, checklist, dropdown, slider, filename):
-    if contents is not None:
-        df = data_handling.parse_POI_contents(contents, filename) # Parse the POI data
-        df = data_handling.clean_POI_data(df) # Clean the POI data
-        df, cluster_data = data_handling.add_cluster_ids(df, 1, slider) # Cluster POIs
+def update_output(poi_file_input, se_file_input, checklist, dropdown, slider, filename):
+    if poi_file_input is not None:
+        df = data_utilities.parse_contents(poi_file_input, filename) # Parse the POI data
+        df = poi_handling.clean_POI_data(df) # Clean the POI data
+        df, cluster_data = poi_handling.add_cluster_ids(df, 1, slider) # Cluster POIs
         
-        children = [map_handling.create_map(df, cluster_data, checklist, dropdown, filename), data_handling.data_display(df, filename)]
+        children = [map_handling.create_map(df, cluster_data, checklist, dropdown, filename), data_utilities.data_display(df, filename)]
         
         return children
 

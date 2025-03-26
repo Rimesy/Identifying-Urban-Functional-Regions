@@ -14,11 +14,21 @@ h2 {
     font-size: 1cap;
 }
 
-div.download-button-div {
-    margin-bottom: 2%;
+div.upload-div {
+    display: flex;
+    justify-content: center;
+    align-items: 'center';
 }
 
-.download-button {
+div.upload-button-div {
+    margin-bottom: 2%;
+    float: left;
+    width: 50%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.upload-button {
     position: relative;
     left: 50%;
     border-radius: 5px;
@@ -29,7 +39,7 @@ div.download-button-div {
     font-size: 2cap;
 }
 
-.download-button:hover {
+.upload-button:hover {
     background-color: #ffffff;
 }
 div.toolbar-div {
