@@ -8,7 +8,7 @@ import pandas as pd
 # Function parse_contents reads a file and strips it to leave the data we want to use
 def parse_contents(contents, filename):
     content_type, content_string = contents.split(',')
-    decoded = base64.b64decode(content_string) # Decodes the data with base64 
+    decoded = base64.b64decode(content_string) # Decodes the data with base64
 
     # Allow three file types to be uploaded
     try:

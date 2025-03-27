@@ -1,3 +1,4 @@
+from dash import html, dcc
 import pyproj
 import cluster
 import data_utilities
@@ -22,11 +23,12 @@ def clean_se_data(df):
     return df
 
 def get_layers(df):
-    layers = list(df.columns.values)
+    layers = ['None']
+    values = list(df.columns.values)
     non_layers = ['area_code', 'area_name', 'census_geography', 'latitude', 'longitude']
 
-    for val in non_layers:
-        while val in layers:
-            layers.remove(val)
+    for val in values:
+        if val not in non_layers:
+            layers.append(val)
     
     return layers
