@@ -1,10 +1,12 @@
 from dash import html, dcc
 import plotly.express as px
 import plotly.graph_objects as go
+
+from urllib.request import urlopen
 from classification import color_map
 
 # Function create_map creates a map figure with the POI data overlaid 
-def create_map(poi_data, cluster_data, checklist_value, cluster_value, se_data, layer_value, filename):
+def create_map(poi_data, cluster_data, checklist_value, cluster_value, se_data, layer_value, msoas, filename):
     # Use of scatter_map takes in data, column headings, as well as other styling, formatting parameters
     fig = px.scatter_map(poi_data, 
                          lat = 'lat', 
@@ -32,13 +34,17 @@ def create_map(poi_data, cluster_data, checklist_value, cluster_value, se_data, 
 
     if (not se_data.empty) and (layer_value != 'None'):
         # TODO: Figure this out
+
         fig.add_trace(
-            px.choropleth_mapbox(
-                se_data,
-                locations=se_data['area_code'],
-                color=se_data[layer_value]
-            )
-        )
+            go.Choroplethmap(
+                geojson=msoas,
+                locations=se_data.area_code,
+                z=se_data[layer_value].astype(float), # TODO: Change this
+                featureidkey='properties.MSOA21CD',
+                colorscale='Blues',
+                showlegend=False,))
+        fig.update_traces(marker_opacity=0.6, hoverinfo='skip')
+        fig.update_layout(coloraxis_colorbar=dict(orientation="h"))
 
     # Throughput html elements that display the map
     return html.Div([

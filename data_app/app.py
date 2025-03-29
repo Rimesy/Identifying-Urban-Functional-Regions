@@ -1,6 +1,7 @@
 # INFO: UPDATE DOCUMENTATION
 from dash import Dash, html, dcc, callback, Input, Output, State
 import pandas as pd
+import json
 import data_utilities
 import map_handling
 import poi_handling
@@ -9,6 +10,10 @@ import se_handling
 app = Dash(__name__, suppress_callback_exceptions=True)
 
 layers = ['None']
+global lsoas
+with open('Middle_layer_Super_Output_Areas_December_2021_Boundaries_EW_BFC_V7_-4346226057264668960.geojson') as response:
+            msoas = json.load(response)
+            response.close()
 
 app.layout = [
     html.H1(children='Interactive Functional Region Map'),
@@ -65,7 +70,7 @@ app.layout = [
     Input('slider', 'value'),
     State('poi_file_input', 'filename'),
 )
-    
+
 
 def update_output(poi_file_input, se_file_input, checklist, cluster_dropdown, layer_dropdown, slider, filename):
     data_output = None
@@ -82,12 +87,12 @@ def update_output(poi_file_input, se_file_input, checklist, cluster_dropdown, la
             se_df = se_handling.clean_se_data(se_df)
             options = se_handling.get_layers(se_df)
 
-        data_output = [map_handling.create_map(poi_df, cluster_data, checklist, cluster_dropdown, se_df, layer_dropdown, filename), data_utilities.data_display(poi_df, filename)]
+        data_output = [map_handling.create_map(poi_df, cluster_data, checklist, cluster_dropdown, se_df, layer_dropdown, msoas, filename), data_utilities.data_display(poi_df, filename)]
         
     
     return data_output, options
     
-    
+
 
 if __name__ == '__main__':
     app.run(debug=True)
