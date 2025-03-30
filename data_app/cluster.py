@@ -35,9 +35,8 @@ def DBSCAN(data, size):
     return cluster_array
 
 
-# Function create_cluster_data finds the coordintes of the four corners of each cluster in an array of clusters, as well as the color associated with the group of the cluster
+# Function create_cluster_data finds the coordinates of the four corners of each cluster in an array of clusters, as well as the color associated with the group of the cluster
 def create_cluster_data(df, array_of_clusters, index_bin):
-
     shape_lon_coords = [] # This 2D list will hold all of the latitude coordinates for clusters
     shape_lat_coords = [] # This 2D list will hold all of the longitude coordinates for clusters
     shape_colors = [] # This list will hold the colours for every cluster
@@ -59,32 +58,6 @@ def create_cluster_data(df, array_of_clusters, index_bin):
         if poi_id_array == []:
             continue
 
-        # Old rectangular cluster shapes
-        """
-        # Set the corner coordinates
-        north = df.at[id_array[0], 'lat']
-        south = df.at[id_array[0], 'lat']
-        east = df.at[id_array[0], 'lon']
-        west = df.at[id_array[0], 'lon']
-        # This for loop checks if the coordinates of each POI extend the bounds of the cluster
-        for _id in id_array:
-            if df.at[_id, 'lat'] > north: north = df.at[_id, 'lat']
-            if df.at[_id, 'lat'] < south: south = df.at[_id, 'lat']
-            if df.at[_id, 'lon'] > west: west = df.at[_id, 'lon']
-            if df.at[_id, 'lon'] < east: east = df.at[_id, 'lon']
-         
-
-        lat_coords.append([north, south, south, north, north, None])
-        lon_coords.append([west, west, east, east, west, None])
-        
-        north, west ----- north, east
-             |                 |
-             |                 |
-             |                 |
-             |                 |
-        south, west ----- south, east
-        """
-
         try:
             points = np.array(poi_coords_array)
             hull = ConvexHull(points) # Computes a convex hull from the POIs in the cluster - to find out more about convex hulls visit https://www.geeksforgeeks.org/convex-hull-algorithm/
@@ -92,6 +65,7 @@ def create_cluster_data(df, array_of_clusters, index_bin):
         
             boundary_lats = []
             boundary_lons = []
+
             # This loop creates a set of coordinates for the cluster that can then be used later to create a shape in plotly
             for point in boundary_points:
                 boundary_lats.append(point[1])
@@ -108,7 +82,8 @@ def create_cluster_data(df, array_of_clusters, index_bin):
 
         except Exception as e:
             error_count += 1
-            print(error_count, ' QH6154 Qhull precision errors caught', end='\r')
-    print(error_count, 'QH6154 Qhull precision errors caught', end='\n')
+            print(error_count, ' QH6154 Qhull precision errors caught', end = '\r')
+
+    print(error_count, 'QH6154 Qhull precision errors caught', end = '\n')
         
     return shape_lon_coords, shape_lat_coords, shape_colors

@@ -1,5 +1,3 @@
-# TODO: GET THAT SOCIAL DATA IN HEREEEE
-
 from dash import html, dash_table
 import io
 import base64
@@ -29,16 +27,16 @@ def parse_contents(contents, filename):
 def data_display(df, filename):
     # Return a html <div> with the dash table nested
     return html.Div([
-        html.H5(children=filename, style={'margin-top':'50px'}),
+        html.H5(children = filename, style = {'margin-top':'50px'}),
 
         # Display DataFrame as a table of i columns
         dash_table.DataTable(
             df.to_dict('records'),
             [{'name': i, 'id': i} for i in df.columns],
-            page_size=25
+            page_size = 25
         ),
 
-        html.Hr(),  # horizontal line
+        html.Hr(), # horizontal line
     ])
 
 

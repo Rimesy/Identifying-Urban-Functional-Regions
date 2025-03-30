@@ -1,13 +1,11 @@
-groups = {'01': 'Accommodation, eating and drinking', 
-          '02': 'Commercial services', 
-          '03': 'Attractions', 
-          '04': 'Sport and entertainment', 
-          '05': 'Education and health', 
-          '06': 'Public Infrastructure', 
-          '07': 'Manufacturing and production', 
-          '09': 'Retail', 
-          '10': 'Transport'}
+'''
+This file of all classifications for points of interest uses the official Ordinance Survey 
+classification system found in the /documentation folder of this repo 
+or at https://www.ordnancesurvey.co.uk/documents/product-support/support/points-of-interest-classification-scheme.pdf
+'''
 
+
+# This dict of colours is strictly for groups at the moment - # TODO: Idea: make a shading-esque system for coloring within a group
 color_map = {
           'Accommodation, eating and drinking': 'yellow', 
           'Commercial services': 'orange', 
@@ -18,6 +16,18 @@ color_map = {
           'Manufacturing and production': 'slategray', 
           'Retail': 'violet', 
           'Transport': 'steelblue'}
+
+
+groups = {'01': 'Accommodation, eating and drinking', 
+          '02': 'Commercial services', 
+          '03': 'Attractions', 
+          '04': 'Sport and entertainment', 
+          '05': 'Education and health', 
+          '06': 'Public Infrastructure', 
+          '07': 'Manufacturing and production', 
+          '09': 'Retail', 
+          '10': 'Transport'}
+
 
 categories = {'01': 'Accommodation', 
               '02': 'Eating and drinking', 
@@ -71,6 +81,7 @@ categories = {'01': 'Accommodation',
               '56': 'Water', 
               '57': 'Public transport, stations and infrastructure', 
               '59': 'Bus transport'}
+
 
 classes = {'0003': 'Bed and breakfast and backpacker accommodation', 
            '0007': 'Self catering', 
