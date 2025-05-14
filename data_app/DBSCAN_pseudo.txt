@@ -1,0 +1,39 @@
+Input: 
+    D = dataset of points
+    ε = maximum neighbourhood radius
+    min_samples = minimum number of neighbours to form a core point
+
+Output:
+    Clusters = list of point groups
+    Noise = list of unclustered points
+
+Initialize:
+    All points in D as unvisited
+    Clusters = []
+    Noise = []
+
+For each point P in D:
+    If P is already visited:
+        Continue
+    Mark P as visited
+    NeighbourPts = all points within distance ε of P
+
+    If size of NeighbourPts < min_samples:
+        Mark P as noise
+        Add P to Noise
+    Else:
+        Create new cluster C
+        Add P to C
+        ExpandCluster(P, NeighbourPts, C, ε, min_samples)
+        Add C to Clusters
+
+Function ExpandCluster(P, NeighbourPts, C, ε, min_samples):
+    For each point P_prime in NeighbourPts:
+        If P_prime is not visited:
+            Mark P_prime as visited
+            NeighbourPts_prime = all points within distance ε of P'
+            If size of NeighbourPts_prime ≥ min_samples:
+                Add NeighbourPts_prime to NeighbourPts
+        If P_prime is not yet in any cluster:
+            Add P_prime to C
+

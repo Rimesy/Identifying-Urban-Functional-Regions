@@ -1,9 +1,9 @@
 import pyproj
-import cluster
+import spatial_utilities
 import data_utilities
 
 
-# Function clean_POI_data takes the the data we need from the DataFrame
+# Function clean_POI_data takes the the data we need from the DataFrame (df)
 def clean_POI_data(df):
     global index_bin
     index_bin = [] # Bin for indexes that hold incomplete data, and therefore need to be removed
@@ -11,6 +11,8 @@ def clean_POI_data(df):
 
     df.rename(columns = {'A': 'unique reference number', 'B': 'name', 'C': 'pointX classification code', 'D': 'lon', 'E': 'lat'}, inplace = True)
     df['group'] = None # Add sixth column needed
+    df['category'] = None
+    df['class'] = None
 
     for i in range(0, len(df.index)):
         line = df.at[i, 'unique reference number'] # Create a String variable of the data in row i of the DataFrame
@@ -32,6 +34,9 @@ def clean_POI_data(df):
         df.at[i, 'lon'] = lon
         df.at[i, 'lat'] = lat
         df.at[i, 'group'] = data_utilities.classify_data(1, data_list[2])
+        df.at[i, 'category'] = data_utilities.classify_data(2, data_list[2])
+        df.at[i, 'class'] = data_utilities.classify_data(3, data_list[2])
+
 
     print('Uploaded ' + str(i + 1 - len(index_bin)) + '/' + str(len(df.index)) + ' rows', end = '\n')
 
@@ -60,11 +65,11 @@ def add_cluster_ids(df, level, slider_value):
 
             for i in range(0, len(df.index)):
                 # This if statement finds any POIs that are within the classification of the group (and not in th index bin), and adds the necessary data to the arrays ready for clustering
-                if (i not in index_bin) and (classification_dict[classification] == data_utilities.classify_data(1, df.at[i, 'pointX classification code'][:2])):
+                if (i not in index_bin) and (classification_dict[classification] == data_utilities.classify_data(level, df.at[i, 'pointX classification code'])):
                     coord_array.append([float(df.at[i, 'lat']), float(df.at[i, 'lon'])]) # Adds the lat and long coordinate pair to the coords array
                     index_array.append(i)
 
-            temp_cluster_ids = cluster.DBSCAN(coord_array, slider_value)
+            temp_cluster_ids = spatial_utilities.DBSCAN(coord_array, slider_value)
 
             num_clusters += len(set(temp_cluster_ids))
             # This if statement eliminates the possibility of -1 counting as a cluster instead the tag for outliers
@@ -80,10 +85,10 @@ def add_cluster_ids(df, level, slider_value):
 
             print('Classification id(' + classification + ') clustered', end = '\r')
         
-        print('Group id(' + classification_dict[-1] + ') clustered', end = '\n')
+        print('Classification id(' + '10' + ') clustered', end = '\n')
 
         # Assigns values from the cluster data - lon, lat are 2D arrays that hold the coordinates for square clusters, colors holds a list of cluster colors
-        lon, lat, colors = cluster.create_cluster_data(df, set(cluster_ids), index_bin)
+        lon, lat, colors = spatial_utilities.create_cluster_data(df, set(cluster_ids), index_bin)
         cluster_data = [lon, lat, colors] # Zips the variables for the sake of cleanliness
 
         return df, cluster_data
