@@ -42,6 +42,7 @@ div.upload-button-div {
 .upload-button:hover {
     background-color: #ffffff;
 }
+
 div.toolbar-div {
     display: flex;
     justify-content: center;
@@ -85,4 +86,31 @@ div.data-div {
     border: 2px solid black;
     border-radius: 5px;
     margin-top: 2%;
+}
+
+div.correlation-div {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-right: 75%;
+}
+
+div.input-div {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 1% 1%;
+    margin: 2%;
+}
+
+.compute-button {
+    border-radius: 5px;
+    padding: 2% 2%;
+    background-color: #bdbdbd;
+    transition-duration: 0.4s;
+    margin-top: 0%;
+    margin: 2%;
+}
+
+.compute-button:hover {
+    background-color: #ffffff;
 }
